@@ -1,0 +1,252 @@
+@import "./shared";
+@import url("https://fonts.googleapis.com/css?family=Fjalla+One&display=swap");
+
+$bg: "https://i.pinimg.com/originals/12/42/23/12422325859503a9f72d3ed7fb798710.png";//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg";
+$form-bg: #f8f4e5;
+$form-shadow: #2A293E;
+$form-shadow-darker: darken($form-shadow, 10%);
+$form-primary-highlight: #95a4ff;
+$form-secondary-highlight: #ffc8ff;
+$font-size: 14pt;
+$font-face: "Roboto";
+$font-color: #2A293E;
+$lightText: #FFFFFF;
+
+body {
+  background: url($bg) center center no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  margin-top: 290px;
+}
+.deepfreeze-root {
+  background: #444444;
+}
+
+.wallet-info {
+  align-items: center;
+  display: flex;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+
+  .connect-wallet {
+    margin-left: 10px;
+  }
+}
+
+
+.form {
+  background: $form-bg;
+  border: 2px solid rgba(0, 0, 0, 1);
+  box-shadow: 15px 15px 1px $form-shadow, 15px 15px 1px 2px rgba(0, 0, 0, 1);
+  justify-content: center;
+  padding: 50px 0;
+  max-width: 550px;
+  box-sizing: border-box;
+  width: 100vw;
+  display: flex;
+  position: relative;  
+
+  tabs {
+    position: absolute;
+    top: -43px;
+    left: -2px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+
+    tab {
+      background-color: $form-shadow;
+      border: 2px solid black;
+      border-bottom: none;
+      color: $lightText;
+      cursor: pointer;
+      padding: 10px 20px;
+      position: relative;      
+      top: 5px;
+      user-select: none;
+
+      &:not(.selected):hover {
+        color:$form-primary-highlight;
+        transform: translateY(-5px);
+        transition: transform 0.25s ease-in-out;
+      }
+      &.selected {
+        cursor: default;
+        top: 0px;
+      }
+      
+    }
+  }
+}
+
+.FREEZER_view {
+  width: 100%;
+  max-width: 400px;
+
+  .depositButton {
+    background: #046;
+
+    &:hover {
+      background: #057;
+      color: white;
+    }
+  }
+}
+
+freezer {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 20px;
+  border: 2px solid $form-shadow;
+  padding: 10px;
+  align-items: end;
+  position: relative;
+
+  h2 {
+    padding-bottom: 1rem;
+    margin: 0;
+    font-size: 38px;
+  }
+  .depositAmount {
+    margin-bottom: 18px;
+    min-width: initial;
+    width: 90px;
+  }
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 126px;
+    left: 0;
+    background-image: url('./icicles.png');
+    height: 60px;
+    width: 100%;
+    background-size: contain;
+    filter: saturate(0);
+  }
+}
+
+
+.logo {
+  position: fixed;
+  left: 0px;
+  max-width: 100vw;
+  top: 0px;
+  width: 400px;
+
+  img {
+    width: 100%;
+  }
+}
+.light-section {
+  position: relative;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  font-size: $font-size;
+  line-height: $font-size * 2;
+  font-family: $font-face;
+  margin-bottom: $font-size * 2;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 1);
+  background: $form-bg;
+  min-width: 300px;
+  padding-left: 5px;
+  outline: none;
+  color: $font-color;
+  box-shadow: 0px 0px 0px 0px $form-shadow;
+  transition: box-shadow 0.1s ease-in;
+
+  &:disabled {
+    border-color: #444444;
+  }
+  &:hover:disabled {
+    cursor: not-allowed;
+  }
+}
+
+input:focus {
+  box-shadow: 0px 3px 0px 0px $form-shadow;
+}
+
+button, .button {
+  cursor: pointer;
+  color: $lightText;
+  display: block;
+  margin: 0 auto;
+  line-height: $font-size * 2;
+  padding: 0 20px;
+  background: $form-shadow;
+  letter-spacing: 2px;
+  transition: 0.2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px $form-primary-highlight, 3px 3px 1px 1px rgba(0, 0, 0, 1);
+
+  &:disabled {
+    background-color: #888888;
+  }
+  &:hover {
+    background: $form-shadow-darker;
+    color: $form-primary-highlight;
+    border: 1px solid $form-shadow-darker;
+  }
+  &:hover:disabled {
+    background-color: #888888;
+    color:#CC3333;
+    cursor: not-allowed;
+  }
+}
+
+.howToHash {
+  margin-top: -25px;
+
+  a {
+    position: relative;
+    top: -3px;
+  }
+}
+
+button.submit {
+  margin-top: 50px;
+}
+
+::selection {
+  background: $form-secondary-highlight;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  border-bottom: 5px solid $form-primary-highlight;
+  -webkit-text-fill-color: $font-color;
+  -webkit-box-shadow: 0 0 0px 1000px $form-bg inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-icon {
+  left: -14px;
+  position: absolute;
+  top: 26px;
+}
+
+
+@media screen and (max-width: ) {
+  
+}

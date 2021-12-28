@@ -1,0 +1,4 @@
+@mixin slow-reveal($props: all, $speed: 1000ms) {
+    transition: $props $speed cubic-bezier(0.275, 0.170, 0.435, 0.980); /* custom */
+    transition-timing-function: cubic-bezier(0.275, 0.170, 0.435, 0.980); /* custom */
+}
